@@ -1,0 +1,26 @@
+{
+  "name": "kroxt-hono-drizzle",
+  "version": "1.0.0",
+  "description": "Hono + Kroxt + Drizzle Authentication Example",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.33.0",
+    "hono": "^4.6.0",
+    "@hono/node-server": "^1.13.0",
+    "kroxt": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^11.0.0",
+    "@types/node": "^22.0.0",
+    "drizzle-kit": "^0.24.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
