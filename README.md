@@ -29,7 +29,7 @@ The examples are organized by framework and database adapter:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/kroxt-examples.git
+   git clone https://github.com/adepoju-oluwatobi/kroxt-examples.git
    cd kroxt-examples
    ```
 
