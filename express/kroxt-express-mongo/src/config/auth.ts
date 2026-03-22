@@ -16,7 +16,7 @@ export const auth = createAuth({
     refreshExpires: "7d"
   },
   jwt: {
-    payload: (user, type) => {
+    payload: (user: any, type: "access" | "refresh") => {
       if (type === "access") {
         return {
           schoolId: user.schoolId,

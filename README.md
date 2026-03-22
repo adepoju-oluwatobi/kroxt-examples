@@ -20,6 +20,9 @@ The examples are organized by framework and database adapter:
 - [**Mongoose (MongoDB)**](./hono/kroxt-hono-mongo): Using Mongoose for MongoDB with Hono.
 - [**Prisma (SQLite)**](./hono/kroxt-hono-prisma): Using Prisma ORM with SQLite in a Hono application.
 
+### [Security Samples](./security-samples)
+- [**CSRF Protection**](./security-samples/csrf-example): Implementing the Double-Submit Cookie pattern with Kroxt security utilities.
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
@@ -60,6 +63,7 @@ The examples are organized by framework and database adapter:
 - **Database Adapters**: Integration with Prisma, Drizzle, and Mongoose.
 - **Authentication Routes**: Login, register, logout, and token refresh flows.
 - **Middleware Integration**: Protecting routes and retrieving the current user from the session.
+- **CSRF Protection**: Stateless security using double-submit cookies and timing-safe comparisons.
 
 ## License
 
