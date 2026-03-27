@@ -23,7 +23,7 @@ export class AuthController {
   async login(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      const result = await authService.login(email, password);
+      const result = await authService.login(email, password, req.ip);
 
       res.cookie("refresh_token", result.refreshToken, { httpOnly: true, secure: true, sameSite: "strict" });
 

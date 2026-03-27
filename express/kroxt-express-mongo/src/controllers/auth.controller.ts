@@ -24,7 +24,7 @@ export class AuthController {
   async login(req: Request, res: Response) {
     try {
       const { email, password } = req.body;
-      const result = await authService.login(email, password);
+      const result = await authService.login(email, password, req.ip);
 
       res.cookie("refresh_token", result.refreshToken, { httpOnly: true, secure: true, sameSite: "strict" });
 
@@ -64,6 +64,22 @@ export class AuthController {
       if (!user) throw new Error("User not found");
 
       res.json({ user });
+    } catch (error: any) {
+      res.status(401).json({ error: error.message });
+    }
+  }
+
+  async changePassword(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) throw new Error("Unauthorized");
+
+      const { newPassword } = req.body;
+      if (!newPassword) throw new Error("New password is required");
+      
+      await authService.changePassword(token, newPassword);
+
+      res.json({ message: "Password changed successfully! All other active sessions have been instantly revoked." });
     } catch (error: any) {
       res.status(401).json({ error: error.message });
     }

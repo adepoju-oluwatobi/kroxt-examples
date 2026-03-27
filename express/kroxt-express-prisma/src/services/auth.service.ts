@@ -5,8 +5,8 @@ export class AuthService {
     return await auth.signup(userData, password);
   }
 
-  async login(email: string, password: string) {
-    return await auth.loginWithPassword(email, password);
+  async login(email: string, password: string, clientIp?: string) {
+    return await auth.loginWithPassword(email, password, clientIp);
   }
 
   async refresh(refreshToken: string) {

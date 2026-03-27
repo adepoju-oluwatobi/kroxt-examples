@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-export const authAdapter = createPrismaAdapter(prisma.user);
+export const authAdapter = createPrismaAdapter(prisma.user, prisma.rateLimit);
 
 export const auth = createAuth({
   adapter: authAdapter,
@@ -13,7 +13,8 @@ export const auth = createAuth({
   pepper: process.env.JWT_PEPPER || "",
   session: {
     expires: "15m",
-    refreshExpires: "7d"
+    refreshExpires: "7d",
+    enforceStrictRevocation: true
   },
   jwt: {
     payload: (user, type) => {
@@ -27,5 +28,13 @@ export const auth = createAuth({
       }
       return {};
     }
+  },
+  rateLimit: {
+    max: 5,
+    windowMs: 60000
+  },
+  ipBlocking: {
+    maxStrikes: 3,
+    blockDurationMs: 60000
   }
 });

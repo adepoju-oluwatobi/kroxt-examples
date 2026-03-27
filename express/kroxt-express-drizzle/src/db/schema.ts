@@ -17,3 +17,9 @@ export const users = sqliteTable("users", {
   oauthId: text("oauth_id"),
   createdAt: integer("created_at", { mode: "timestamp" }).defaultNow(),
 });
+
+export const rateLimits = sqliteTable("rate_limits", {
+  key: text("key").primaryKey(),
+  count: integer("count").notNull(),
+  resetTime: integer("reset_time").notNull(),
+});
